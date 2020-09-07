@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Plasma Donor App</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<!-- <link rel="stylesheet" href="style.css"> -->
+
+<style>
+body{
+  background-color: #ee6f57;
+
+}
+form{
+  text-align: center;
+}
+button{
+  font-family: sans-serif;
+  background-color: #00334e;
+  border: none;
+  color: white;
+  padding: 12px 179px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 7px;
+
+}
+.login{
+top: 20%;
+}
+.nav-head{
+  font-family: 'Sacramento', cursive;
+  font-size: 2.3rem;
+}
+.header{
+  background-color: #00334e;
+  box-shadow: 0px 0px 0px grey;
+}
+li a {
+	font-family: 'Sacramento', cursive;
+	font-size: 1.6rem;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 25px;
+  text-decoration: none;
+}
+
+
+button,input, optgroup, select, textarea {
+    margin: 8px;}
+</style>
+</head>
+
+<body>
+<div class="header">
+<div class="nav-head"><i class="fa fa-medkit" aria-hidden="true"></i>
+Plasma Donor App</div>
+	<ul>
+
+
+		<li><a href="/requester"><i class="fa fa-child" aria-hidden="true"></i>Request</a></li>
+		<li><a href="/registration"><i class="fa fa-id-card" aria-hidden="true"></i>Register</a></li>
+		<li><a class="active" href="/login"><i class="fa fa-home" aria-hidden="true"></i>
+Home</a></li>
+	</ul>
+</div>
+ <div class="login" >
+		<div>
+		</div>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('loginpage')}}"method="post">
+    	<input type="text" name="user" placeholder="Enter UserName" required="required" style="color:black" />
+        <input type="password" name="passw" placeholder="Enter Password" required="required" style="color:black" />
+        <button type="submit">Login</button>
+
+    </form>
+<br><br>
+<div style="color:black">
+ {{ pred }}</div>
+ </div>
+
+</body>
+</html>
