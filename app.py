@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-''' 
+'''
     Created By Rupam Gogoi
 '''
 from flask import Flask, render_template, request, redirect, url_for
@@ -24,7 +24,7 @@ def register():
     x = [x for x in request.form.values()]
     print(x)
     params = "name="+x[0]+"&email="+x[1]+"&phone="+x[2]+"&city="+x[3]+"&infect="+x[4]+"&blood="+x[5]+"&password="+x[6]
-    
+
     if('errorType' in check(x[1])):
         url = "https://cueif5e8m3.execute-api.us-east-1.amazonaws.com/plasma/registration?"+params
         response = requests.get(url)
@@ -32,11 +32,11 @@ def register():
     else:
         return render_template('register.html', pred="You are already a member, please login using your details")
 
-@app.route('/')    
+@app.route('/')
 @app.route('/login')
 def login():
     return render_template('login.html')
-    
+
 @app.route('/loginpage',methods=['POST'])
 def loginpage():
     user = request.form['user']
@@ -49,9 +49,9 @@ def loginpage():
         if(passw==data['password']):
             return redirect(url_for('stats'))
         else:
-            return render_template('login.html', pred="Login unsuccessful. You have entered the wrong password.") 
-        
-        
+            return render_template('login.html', pred="Login unsuccessful. You have entered the wrong password.")
+
+
 @app.route('/stats')
 def stats():
     url = "https://cueif5e8m3.execute-api.us-east-1.amazonaws.com/plasma/getbloodgroupdata"
@@ -78,12 +78,11 @@ def requested():
         url="https://www.fast2sms.com/dev/bulk?authorization=L0FUEue1ho8aRrnTy5KSABPgsdxbQWitND6zXkOYmGIZfvl9CV7ZWp1TcaK90XqvkujQAmxlPoHRtE4s&sender_id=FSTSMS&message=Need Plasma of your blood group&language=english&route=p&numbers="+str(i['phone'])
         result = requests.request("GET",url)
         print(result)
-        
+
         phone.append(i['phone'])
     print(phone)
     return render_template('request.html', pred="Your request is sent to the concerned people.")
-    
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
-
+    app.run(host="0.0.0.0", port=8080)
